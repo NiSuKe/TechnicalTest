@@ -13,4 +13,6 @@ Feature: Technical Test feature
   Scenario: Obtener el número de habitaciones listadas
     Given Open chrome
     When Navigate to melia specific browse
+    And Close melia cookies
     Then the number of rooms displayed is '18'
+    And Application should be closed

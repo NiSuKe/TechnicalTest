@@ -25,7 +25,7 @@ public class TestScenario {
 
     @Given("^Open chrome$")
     public void Open_chrome() throws Throwable {
-        System.setProperty("webdriver.chrome.driver", "D:\\Programacion\\cucumber-test-sample-masterSINDRIVER\\cucumber-test-sample-master\\target\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "target/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -178,9 +178,9 @@ public class TestScenario {
     @Then("^the number of rooms displayed is '(\\d+)'$")
     public void the_number_of_rooms_displayed_is(int expectedRoomsDisplayed) {
         final WebDriverWait wait = new WebDriverWait(driver, 10);
-        final By roomsList = By.xpath("");
+        final By roomsList = By.xpath("//div[contains(@class, 'c-hotel-sheet-room')]//a[contains(@class, 'btn')]");
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(roomsList));
         List<WebElement> elementsOnList = driver.findElements(roomsList);
-        Assert.assertEquals(expectedRoomsDisplayed,elementsOnList.size());
+        Assert.assertEquals(expectedRoomsDisplayed, elementsOnList.size());
     }
 }
